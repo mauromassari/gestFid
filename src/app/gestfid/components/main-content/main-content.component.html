@@ -1,0 +1,32 @@
+<div *ngIf="!cliente">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
+
+<div *ngIf="cliente">
+  <mat-card>
+    <mat-card-header>
+      <mat-icon mat-card-avatar svgIcon="{{cliente.IdAvatar}}"></mat-icon>
+      <mat-card-title>{{cliente.nominativo}}</mat-card-title>
+      <mat-card-subtitle>{{cliente.stato}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-tab-group>
+
+        <mat-tab label="Info">
+          <p>Il cliente è residente nel comune di {{cliente.comune}}. Ha maturato/scaricato {{cliente.bollini}} bollini con un totale di {{cliente.spese}} spese.</p>
+        </mat-tab>
+
+        <mat-tab label="Spese">
+          <app-sales [sales]="cliente.transazioni"></app-sales>
+        </mat-tab>
+
+
+      </mat-tab-group>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="modifica(cliente.id)">Modifica</button>
+      <button mat-button (click)="elimina(cliente.id)">Elimina</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+

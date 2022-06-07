@@ -1,0 +1,27 @@
+<mat-drawer-container class="app-sidenav-container">
+
+  <mat-drawer #drawer
+    [mode]="isScreenSmall ? 'over' : 'side' "
+    [opened]="!isScreenSmall"
+    class="app-sidenav mat-elevation-z10">
+
+    <mat-toolbar color="primary">
+      Clienti
+    </mat-toolbar>
+
+    <mat-nav-list>
+      <mat-list-item *ngFor="let cliente of clienti | async"> <!-- oggetti asincroni trovati da un observer-->
+         <a matLine [routerLink]="['/gestfid', cliente.id]">{{ cliente.nominativo }}</a>
+         <mat-icon svgIcon="{{cliente.IdAvatar}}"></mat-icon>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-drawer>
+
+  <mat-drawer-content class="app-sidenav-content">
+    <app-toolbar (toggleSidenav)="drawer.toggle()"></app-toolbar>
+    <div class="wrapper">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+
+</mat-drawer-container>
