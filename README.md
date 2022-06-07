@@ -1,3 +1,5 @@
+GestFid è il mio secondo CRM Aziendale realizzato con Angular, Angular Material, RxJS e JSON Server
+
 Installa:
 
 - angular material,
